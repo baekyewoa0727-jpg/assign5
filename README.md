@@ -1,0 +1,4 @@
+22400330 백예원
+
+git: 
+vercel: https://assign5-chi.vercel.app/JSdynamic.html
