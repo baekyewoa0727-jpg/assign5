@@ -19,30 +19,39 @@
         const addBtn = document.querySelector("#add");
         const list = document.querySelector("#list");
 
-        addBtn.addEventListener("click", function () {
-            const value = input.value.trim();
+        //addBtn.addEventListener("click", function () {
+        //값을 저장하는 코드 - split 안되는 버전 const value = input.value.trim();
 
-            if (value == "") {
+        addBtn.addEventListener("click", function () {
+            const fruits = input.value.split(",");
+
+            if (input.value == "") {
                 alert("빈칸을 채우세요");
                 return;
             }
 
-            const li = document.createElement("li");
-            li.innerText = value;
+            //헷갈린 부분
 
-//추가되는 각 li요소별로 버튼을 생성하기 
+            fruits.forEach(function (fruit) {
+
+
+            const li = document.createElement("li");
+            li.innerText=fruit;
+
             const deleteBtn = document.createElement("button");
             deleteBtn.innerText="삭제";
+
             li.appendChild(deleteBtn);
             list.appendChild(li);
 
-        deleteBtn.addEventListener("click",function(){
-            li.remove();
+            deleteBtn.addEventListener("click", function () {
+                li.remove();
+            });
         });
-        });
+    });
 
 
-        //쉼표로 과일 seperate하는 기능, li별 삭제 버튼이 만들어질 수 있도록 하기
+        //쉼표로 과일 seperate하는 기능,
 
     </script>
 </body>
