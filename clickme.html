@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="alert('hello world')">click me</button>
+    <button id="btn">click me</button>
+   
+    <button>click me</button>
+    <script>
+        window.addEventListener("load",function(){ 
+        btn = document.querySelector("btn");
+        btn.addEventListener("click", hello);
+    });
+    </script>
+
+</body>
+</html>
+
+<script>
+    const btn = document.querySelector("btn");
+    btn.addEventListner("click",function(){
+        alert('hello world');
+    });
+</script>
+
+<!--3개만 -->
