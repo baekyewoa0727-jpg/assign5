@@ -65,6 +65,7 @@
                 review: "지루하다"
             }
         ];
+        let editMovie = null;
 
         function render() {
             list.innerHTML = "";
@@ -72,6 +73,30 @@
                 const p = document.createElement("p");
 
                 p.innerText = item.title + " - " + item.director;
+
+                const editBTN = document.createElement("button");
+                editBTN.innerText = "수정하기";
+
+                editBTN.addEventListener("click", function () {
+                editMovie = item;
+                    document.querySelector("#title").value = item.title;
+                    document.querySelector("#director").value = item.director;
+                    document.querySelector("#date").value = item.date;
+                    document.querySelector("#review").value = item.review;
+                    document.querySelector('input[name="rating"][value="' + item.rating + '"]').checked = true;
+                });
+                p.appendChild(editBTN);
+
+
+
+
+                const deleteBTN = document.createElement("button");
+                deleteBTN.innerText = "삭제하기";
+                deleteBTN.addEventListener("click",function(){
+                    movie.splice(movie.indexOf(item),1);
+                    render();
+                });
+p.appendChild(deleteBTN);
                 list.appendChild(p);
             });
 
@@ -79,24 +104,33 @@
         render();
 
 
-        function create() {
-            const title = document.querySelector("#title").value;
-            const director = document.querySelector("#director").value;
-            const date = document.querySelector("#date").value;
-            const rating = document.querySelector('input[name="rating"]:checked').value;
-            const review = document.querySelector("#review").value;
+function create() {
+    const title = document.querySelector("#title").value;
+    const director = document.querySelector("#director").value;
+    const date = document.querySelector("#date").value;
+    const rating = document.querySelector('input[name="rating"]:checked').value;
+    const review = document.querySelector("#review").value;
 
-            const newMovie = {
-                title: title,
-                director: director,
-                date: date,
-                rating: rating,
-                review: review
-            };
+    const newMovie = {
+        title: title,
+        director: director,
+        date: date,
+        rating: rating,
+        review: review
+    };
 
-            movie.push(newMovie);
-            render();
-        }
+    if (editMovie == null) {
+        movie.push(newMovie);
+    } else {
+        editMovie.title = title;
+        editMovie.director = director;
+        editMovie.date = date;
+        editMovie.rating = rating;
+        editMovie.review = review;
+    }
+
+    render();
+}
 
     </script>
 
