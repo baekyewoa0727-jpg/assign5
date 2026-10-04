@@ -72,9 +72,7 @@
             list.innerHTML = "";
             movie.forEach(function (item, index) {
                 const p = document.createElement("p");
-
-                p.innerText = item.title + " - " + item.director;
-
+p.innerText = item.title + " - " + item.director + " \n" + item.date + " - " + item.rating + "점 - " + item.review;
                 const editBTN = document.createElement("button");
                 editBTN.innerText = "수정하기";
 
