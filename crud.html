@@ -140,8 +140,10 @@ function create() {
         editMovie.review = review;
     }
 
+    
     editMovie = null;
-render();
+document.querySelector("#movie").reset();
+render();//저장 후 폼 초기화 - ai 제공해준 코드
 }
 
     </script>

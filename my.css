@@ -1,0 +1,55 @@
+body {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 40px;
+}
+
+form {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+#list p {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 15px auto;
+}
+
+button {
+    padding: 8px 12px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button[type="submit"] {
+    background-color: green;
+    color: white;
+}
+
+#list button:first-of-type {
+    background-color: blue;
+    color: white;
+}
+
+#list button:last-of-type {
+    background-color: red;
+    color: white;
+}
