@@ -14,13 +14,13 @@
 
     <form id="movie">
         <p>영화 제목</p>
-        <input type="text" id="title">
+        <input type="text" id="title" required>
 
         <p>감독</p>
-        <input type="text" id="director">
+        <input type="text" id="director" required>
 
         <p>개봉 날짜</p>
-        <input type="date" id="date">
+        <input type="date" id="date" required>
 
         <p>별점</p>
         <input type="radio" name="rating" value="1"> 1점
@@ -30,51 +30,76 @@
         <input type="radio" name="rating" value="5"> 5점
 
         <p>후기</p>
-        <input type="text" id="review">
+        <input type="text" id="review" required>
+        <button type="button" onclick="create()">저장하기</button>
     </form>
-<h2>영화 목록</h2>
-<div id="list"></div>
 
-<script>
-    let movie = [
-    {
-        id: 1,
-        title: "오디세이",
-        director: "Christopher Nolan",
-        date: "2026-07-17",
-        rating: 5,
-        review: "재밌었다"
-    },
-    {
-        id: 2,
-        title: "치이카와 인어섬의 비밀",
-        director: "오이카와 케이",
-        date: "2026-07-24",
-        rating: 3,
-        review: "감동적이다"
-    },
-    {
-        id: 3,
-        title: "토이 스토리 5",
-        director: "Andrew Stanton",
-        date: "2026-06-19",
-        rating: 2,
-        review: "지루하다"
-    }
-];
 
-function render(){
-    list.innerHTML ="";
-    movie.forEach(function(item){
-        const p = document.createElement("p");
+    <h2>영화 목록</h2>
+    <div id="list"></div>
 
-        p.innerText = item.title+"/"+item.director;
-        list.appendChild(p);
-    });
+    <script>
+        let movie = [
+            {
+                id: 1,
+                title: "오디세이",
+                director: "Christopher Nolan",
+                date: "2026-07-17",
+                rating: 5,
+                review: "재밌었다"
+            },
+            {
+                id: 2,
+                title: "치이카와 인어섬의 비밀",
+                director: "오이카와 케이",
+                date: "2026-07-24",
+                rating: 3,
+                review: "감동적이다"
+            },
+            {
+                id: 3,
+                title: "토이 스토리 5",
+                director: "Andrew Stanton",
+                date: "2026-06-19",
+                rating: 2,
+                review: "지루하다"
+            }
+        ];
 
-}
-render();
-</script>
+        function render() {
+            list.innerHTML = "";
+            movie.forEach(function (item) {
+                const p = document.createElement("p");
+
+                p.innerText = item.title + " - " + item.director;
+                list.appendChild(p);
+            });
+
+        }
+        render();
+
+
+        function create() {
+            const title = document.querySelector("#title").value;
+            const director = document.querySelector("#director").value;
+            const date = document.querySelector("#date").value;
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            const review = document.querySelector("#review").value;
+
+            const newMovie = {
+                title: title,
+                director: director,
+                date: date,
+                rating: rating,
+                review: review
+            };
+
+            movie.push(newMovie);
+            render();
+        }
+
+    </script>
 
 </body>
+
 </html>
