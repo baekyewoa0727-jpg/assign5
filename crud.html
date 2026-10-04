@@ -32,8 +32,8 @@
         <p>후기</p>
         <input type="text" id="review">
     </form>
-
-
+<h2>영화 목록</h2>
+<div id="list"></div>
 
 <script>
     let movie = [
@@ -62,6 +62,18 @@
         review: "지루하다"
     }
 ];
+
+function render(){
+    list.innerHTML ="";
+    movie.forEach(function(item){
+        const p = document.createElement("p");
+
+        p.innerText = item.title+"/"+item.director;
+        list.appendChild(p);
+    });
+
+}
+render();
 </script>
 
 </body>
