@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>crud-movie</title>
+    <link rel="stylesheet" href="my.css">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
         <input type="date" id="date" required>
 
         <p>별점</p>
-        <input type="radio" name="rating" value="1"> 1점
+        <input type="radio" name="rating" value="1" required> 1점
         <input type="radio" name="rating" value="2"> 2점
         <input type="radio" name="rating" value="3"> 3점
         <input type="radio" name="rating" value="4"> 4점
@@ -31,7 +32,7 @@
 
         <p>후기</p>
         <input type="text" id="review" required>
-        <button type="button" onclick="create()">저장하기</button>
+        <button type="submit">저장하기</button>
     </form>
 
 
@@ -69,7 +70,7 @@
 
         function render() {
             list.innerHTML = "";
-            movie.forEach(function (item) {
+            movie.forEach(function (item, index) {
                 const p = document.createElement("p");
 
                 p.innerText = item.title + " - " + item.director;
@@ -93,15 +94,25 @@
                 const deleteBTN = document.createElement("button");
                 deleteBTN.innerText = "삭제하기";
                 deleteBTN.addEventListener("click",function(){
-                    movie.splice(movie.indexOf(item),1);
-                    render();
+                    if (confirm("정말 삭제하시겠습니까?")) {
+                        movie.splice(index, 1);
+                        render();
+                    }
                 });
+
+
 p.appendChild(deleteBTN);
+
                 list.appendChild(p);
             });
 
         }
         render();
+
+        document.querySelector("#movie").addEventListener("submit", function(event) {
+            event.preventDefault();
+            create();
+        });
 
 
 function create() {
@@ -129,7 +140,8 @@ function create() {
         editMovie.review = review;
     }
 
-    render();
+    editMovie = null;
+render();
 }
 
     </script>
